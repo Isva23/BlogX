@@ -24,7 +24,7 @@ if(!empty($_POST)){
     if($gp){
         $datos = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
         $post = new PostController();
-        $post->editPost($datos);
+        $post->newPost($datos);
         header('Location: /resources/views/autores/myposts.php');
     }
             //***EDITAR PUBLICACION */
