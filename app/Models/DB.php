@@ -24,7 +24,7 @@ use mysqli;
 
         public $table;
 
-        public function __construct($dbh = "localhost", $dbn = "blogx", $dbu = "root", $dbp = ""){
+        public function __construct($dbh = "localhost", $dbn = "blogx", $dbu = "root", $dbp = "Admin123?"){
             
             $this->db_host = $dbh;
             $this->db_name = $dbn;
@@ -103,11 +103,20 @@ use mysqli;
             $stmt->bind_param("i", $id);
             return $stmt->execute();
         }
-        public function update(){
-            $sql = 'update into ' . str_replace("Models\\","",get_class($this)) . '(' . implode(",", $this->campos ) . ') values (' . trim(str_replace("&", "?,",str_pad("",count($this->campos),"&")),",") . ');';
-            $stmt = $this->table->prepare($sql);
-            $stmt->bind_param(str_pad("",count($this->campos),"s"),...$this->valores);
+        public function update($id,$uid,$titulo,$body) {
+            $sql = "UPDATE posts SET userId = '$uid', title = '$titulo',body = '$body' WHERE id = $id";
+            $stmt = $this->conex->prepare($sql);
             return $stmt->execute();
-
+            
         }
-    }
+        /*public function update($id){
+            $sql = 'update ' . str_replace("Models\\", "", get_class($this)) . ' set ' . implode("=?, ", $this->campos) . '=? where id = ?';
+            $stmt = $this->conex->prepare($sql);
+            $params = array_merge($this->valores, [$id]);
+            $stmt->bind_param(str_pad("", count($params), "s") . "i", ...$params);
+            return $stmt->execute();
+        }*/
+
+        
+
+    }           

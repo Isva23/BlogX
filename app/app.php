@@ -9,6 +9,7 @@ use Controllers\PostController as PostController;
 
 if(!empty($_POST)){
 
+
     //******LOGIN */
 
     $login = in_array('_login',array_keys(filter_input_array(INPUT_POST)));
@@ -23,18 +24,17 @@ if(!empty($_POST)){
     if($gp){
         $datos = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
         $post = new PostController();
-        $post->newPost($datos);
+        $post->editPost($datos);
         header('Location: /resources/views/autores/myposts.php');
     }
-    //***EDITAR PUBLICACION */
-    $ep = in_array('_gp',array_keys(filter_input_array(INPUT_POST)));
-	if($ep){
-        $datos = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
-        $editPost = new PostController();
-        $result = $editPost->editPost($datos);
-        print_r($result);
-        header('Location: /resources/views/autores/myposts.php');
-	}
+            //***EDITAR PUBLICACION */
+    $ep = in_array('_ep',array_keys(filter_input_array(INPUT_POST)));
+        if($ep){
+            $datos = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+            $editPost = new PostController();
+            $editPost->editPost($datos);
+            header('Location: /resources/views/autores/myposts.php');
+        }
 }
 
 if(!empty($_GET)){
@@ -87,5 +87,6 @@ if(!empty($_GET)){
 		$openpost = new PostController();
 		print_r($openpost->getPosts($l, $id));
 	}
+
     
 }

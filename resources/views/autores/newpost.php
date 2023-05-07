@@ -13,8 +13,8 @@ head($ua);
     <form action="/app/app.php" method="POST">
     <div class="card">
         <div class="card-body">
-            <input type="hidden" name="uid" value="<?=$ua->id?>">
-            <input type="hidden" name="_gp" value="true">
+            <input type="hidden" name="id" value="3">
+            <input type="hidden" name="_ep" value="true">
             <div class="mb-3">
                 <label for="title" class="form-label">Titulo</label>
                 <input type="text" name="title" id="title" class="form-control" placeholder="Titulo de la publicacion" required>

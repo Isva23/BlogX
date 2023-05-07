@@ -26,7 +26,7 @@
         }
         public function newPost($datos){
             $post = new posts();
-            $post->valores=[$datos['uid'],$datos['title'],$datos['body']];
+            $post->valores=[$this->userId,$datos['title'],$datos['body']];
             $result = $post->create();
             return;
             die;
@@ -44,10 +44,22 @@
 		}
         public function editPost($datos){
             $post = new posts();
-            $post->valores=[$datos['uid'],$datos['title'],$datos['body']];
-            $result = $post->update();
+            $id = $datos['id'];
+            $uid = $this->userId;
+            $titulo = $datos['title'];
+            $body = $datos['body'];
+            $result = $post->update($id,$uid,$titulo,$body);
             return;
             die;
         }
+        /*public function editPost($datos){
+            $post = new posts();
+            $id = $datos['id'];
+            $post->valores=[$this->userId,$datos['title'],$datos['body']];
+            $result = $post->update($id);
+            return;
+            die;
+        }*/
+
     }
     
