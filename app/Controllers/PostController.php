@@ -52,14 +52,7 @@
             return;
             die;
         }
-        /*public function editPost($datos){
-            $post = new posts();
-            $id = $datos['id'];
-            $post->valores=[$this->userId,$datos['title'],$datos['body']];
-            $result = $post->update($id);
-            return;
-            die;
-        }*/
+        
 
     }
     

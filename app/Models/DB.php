@@ -109,14 +109,6 @@ use mysqli;
             return $stmt->execute();
             
         }
-        /*public function update($id){
-            $sql = 'update ' . str_replace("Models\\", "", get_class($this)) . ' set ' . implode("=?, ", $this->campos) . '=? where id = ?';
-            $stmt = $this->conex->prepare($sql);
-            $params = array_merge($this->valores, [$id]);
-            $stmt->bind_param(str_pad("", count($params), "s") . "i", ...$params);
-            return $stmt->execute();
-        }*/
-
         
 
     }           
